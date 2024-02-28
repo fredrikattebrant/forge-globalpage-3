@@ -1,0 +1,15 @@
+modules:
+  jira:globalPage:
+    - key: forge-globalpage-3-hello-world-page
+      resource: main
+      resolver:
+        function: resolver
+      title: forge-globalpage-3
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+app:
+  id: ari:cloud:ecosystem::app/8355b706-39dc-48a5-a371-e88d1f1c2373
