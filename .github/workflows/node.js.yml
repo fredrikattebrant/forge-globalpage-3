@@ -32,6 +32,7 @@ jobs:
       run: npx forge settings set usage-analytics false
     - name: Deploy to atlassian cloud site
       run: |
+        echo Email check $FORGE_EMAIL
         npx forge login -u ${FORGE_EMAIL} -t ${FORGE_TOKEN} --non-interactive
         npx forge deploy
     env:
