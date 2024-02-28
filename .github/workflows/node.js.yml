@@ -29,4 +29,5 @@ jobs:
     - run: npm install
     - run: npm install -g @forge/cli
     - run: forge settings set usage-analytics false
+    - run: forge login -u $FORGE_EMAIL -t $FORGE_API_TOKEN
     - run: forge lint
