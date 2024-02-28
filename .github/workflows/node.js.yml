@@ -23,14 +23,18 @@ jobs:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
-      env:
-        forge_email: ${{ secrets.FORGE_EMAIL }}
-        forge_api_token: ${{ secrets.FORGE_API_TOKEN }}
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
-    - run: npm install -g @forge/cli
-    - run: forge settings set usage-analytics false
-    - run: forge login -u "$env.forge_email" -t "$env.forge_api_token" --non-interactive
-    - run: forge lint
+    - run: npm ci
+    - run: npm install @forge/cli
+    - name: disable analytics
+      run: npx forge settings set usage-analytics false
+    - name: Deploy to atlassian cloud site
+      run: |
+        npm run static:build
+        forge login -u ${FORGE_EMAIL} -t ${FORGE_TOKEN} --non-interactive
+        forge deploy
+    env:
+        FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
+        FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
