@@ -33,8 +33,8 @@ jobs:
     - name: Deploy to atlassian cloud site
       run: |
         echo Email check: $FORGE_EMAIL ok
-        echo Toke check: $FORGE_TOKEN ok
-        npx forge login -u ${FORGE_EMAIL} -t ${FORGE_TOKEN} --non-interactive --verbose
+        echo Token check: $FORGE_API_TOKEN ok
+        npx forge login -u ${FORGE_EMAIL} -t ${FORGE_API_TOKEN} --non-interactive --verbose
         npx forge deploy
       env:
           FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
