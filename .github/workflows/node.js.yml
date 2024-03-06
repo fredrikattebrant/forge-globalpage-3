@@ -32,10 +32,12 @@ jobs:
       run: npx forge settings set usage-analytics false
     - name: Deploy to atlassian cloud site
       run: |
-        echo Email check: $FORGE_EMAIL ok
-        echo Token check: $FORGE_API_TOKEN ok
-        npx forge login -u $FORGE_EMAIL -t $FORGE_API_TOKEN --non-interactive --verbose
+        echo Email check: $FORGE_EMAILw ok
+        echo Token check: $FORGE_API_TOKENw ok
+        echo Email check: ${{ secrets.FORGE_EMAIL }} ok
+        echo Token check: ${{ secrets.FORGE_API_TOKEN }} ok
+        npx forge login -u ${{ secrets.FORGE_EMAIL }} -t ${{ secrets.FORGE_API_TOKEN }} --non-interactive --verbose
         npx forge deploy
       env:
-          FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
-          FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
+          FORGE_EMAIL2: ${{ secrets.FORGE_EMAIL }}
+          FORGE_TOKEN2: ${{ secrets.FORGE_API_TOKEN }}
