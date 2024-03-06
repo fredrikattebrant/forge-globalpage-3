@@ -27,12 +27,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm install @forge/cli
+    - run: npm install @forge/cli --no-optional
     - name: disable analytics
       run: npx forge settings set usage-analytics false
     - name: Deploy to atlassian cloud site
       run: |
         echo Email check: ${{ secrets.FORGE_EMAIL }} ok
         echo Token check: ${{ secrets.FORGE_API_TOKEN }} ok
-        npx forge login -u ${{ secrets.FORGE_EMAIL }} -t ${{ secrets.FORGE_API_TOKEN }} --non-interactive --verbose
-        npx forge deploy
+        run ./scripts/build.sh
+        # npm run static:build
+        # npx forge login -u ${{ secrets.FORGE_EMAIL }} -t ${{ secrets.FORGE_API_TOKEN }} --non-interactive --verbose
+        # npx forge deploy
