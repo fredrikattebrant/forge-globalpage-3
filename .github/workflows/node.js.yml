@@ -26,10 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm install @forge/cli --no-optional
-    - name: disable analytics
-      run: npx forge settings set usage-analytics false
     - name: Deploy to atlassian cloud site
       run: |
         echo Email check: ${{ secrets.FORGE_EMAIL }} ok

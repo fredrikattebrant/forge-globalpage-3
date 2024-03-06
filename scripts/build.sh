@@ -11,7 +11,7 @@ npm forge settings set usage-analytics false
 
 cd static/hello-world
 npm ci
- m run build
+npm run build
 cd ../..
 
 npx forge login -u $USER -t $KEY --non-interactive --verbose
