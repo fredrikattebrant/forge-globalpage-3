@@ -1,7 +1,9 @@
 #!/bin/bash
-set -xv 
-USER="$1"
-KEY="$2"
+set -xv
+
+# Use environment instead of 'forge login' as we can't use the system keychain
+export FORGE_EMAIL="$1"
+export FORGE_API_TOKEN="$2"
 
 echo "---"
 echo "Running the build script"
@@ -20,6 +22,7 @@ echo "---"
 echo "About to deploy with forge:"
 echo "---"
 
-npx forge login -u ${USER} -t ${KEY} --non-interactive --verbose
+#npx forge login -u ${USER} -t ${KEY} --non-interactive --verbose
+
 npx forge whoami # debuggin'
 npx forge deploy -e development
