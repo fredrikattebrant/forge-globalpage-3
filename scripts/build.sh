@@ -9,7 +9,7 @@ echo "---"
 
 npm ci
 npm install @forge/cli --omit=optional
-npm forge settings set usage-analytics false
+npx forge settings set usage-analytics false
 
 cd static/hello-world
 npm ci
