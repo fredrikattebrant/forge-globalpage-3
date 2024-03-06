@@ -30,7 +30,7 @@ jobs:
       run: |
         echo Email check: ${{ secrets.FORGE_EMAIL }} ok
         echo Token check: ${{ secrets.FORGE_API_TOKEN }} ok
-        ./scripts/build.sh
+        ./scripts/build.sh ${{ secrets.FORGE_EMAIL }} ${{ secrets.FORGE_API_TOKEN }}
         # npm run static:build
         # npx forge login -u ${{ secrets.FORGE_EMAIL }} -t ${{ secrets.FORGE_API_TOKEN }} --non-interactive --verbose
         # npx forge deploy
