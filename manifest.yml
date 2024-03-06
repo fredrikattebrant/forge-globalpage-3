@@ -4,7 +4,7 @@ modules:
       resource: main
       resolver:
         function: resolver
-      title: forge-globalpage-3
+      title: Change the global title
   function:
     - key: resolver
       handler: index.handler
