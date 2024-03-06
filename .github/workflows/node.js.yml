@@ -36,6 +36,6 @@ jobs:
         echo Toke check: $FORGE_TOKEN ok
         npx forge login -u ${FORGE_EMAIL} -t ${FORGE_TOKEN} --non-interactive --verbose
         npx forge deploy
-    env:
-        FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
-        FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
+      env:
+          FORGE_EMAIL: ${{ secrets.FORGE_EMAIL }}
+          FORGE_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
